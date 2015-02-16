@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "user#index"
+  root 'orders#index'
   resources :skus
 
   resources :orders
