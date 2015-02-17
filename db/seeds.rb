@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
 Sku.create(name: 'Tray 1 - Assorted Sandwiches and Desserts', price: 100, cogs: 45)
 Sku.create(name: 'Tray 2 - Assorted Sandwiches and Soups', price: 130, cogs: 55)
 Sku.create(name: 'Tray 3 - Assorted Sandwiches, Soups and Desserts', price: 180, cogs: 65)
@@ -23,6 +22,5 @@ Sku.create(name: '6 Chocolate Cakes', price: 12, cogs: 4)
 Sku.create(name: '6 Fruit Cups', price: 12, cogs: 4)
 Sku.create(name: 'Delivery', price: 20, cogs: 0)
 
+
 User.create(email:"admin@banquet.com", password:"my_super_secret_password", password_confirmation:"my_super_secret_password")
-
-

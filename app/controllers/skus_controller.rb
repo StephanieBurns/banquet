@@ -76,6 +76,6 @@ before_action :authenticate_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sku_params
-      params.require(:sku).permit(:order_id, :name, :price)
+      params.require(:sku).permit(:order_id, :name, :price, :cogs)
     end
 end
