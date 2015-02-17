@@ -24,12 +24,10 @@ ActiveRecord::Schema.define(version: 20150217011902) do
     t.datetime "updated_at",  null: false
   end
 
-
   create_table "orders_skus", id: false, force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "sku_id",   null: false
   end
-
 
   create_table "skus", force: :cascade do |t|
     t.integer  "order_id"
