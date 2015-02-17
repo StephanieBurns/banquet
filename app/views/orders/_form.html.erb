@@ -16,14 +16,12 @@
   </div>
 
 
-
+<div>
   <% @skus.each do |sku| %>
-  <%= sku.checkbox_tag :sku_name %>
 
-
-  <div class
-  <%= f.label :sku_id %>
-  <%= f.check_box_tag :sku_id %>
+  <div class="field">
+  <%= label_tag sku.name %>
+  <%= check_box_tag :sku_id %>
   </div>
 
   
@@ -40,8 +38,9 @@
     <%= f.label :party_date %><br>
     <%= f.date_select :party_date %>
   </div>
-  
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>
