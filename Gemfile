@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -43,3 +44,7 @@ group :development, :test do
   gem 'spring'
 end
 
+
+# gem 'spree', '2.4.3'
+# gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-4-stable'
+# gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
