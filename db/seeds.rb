@@ -21,3 +21,5 @@ Sku.create(name: '6 Green Salads', price: 12, cogs: 6)
 Sku.create(name: '6 Chocolate Cakes', price: 12, cogs: 4)
 Sku.create(name: '6 Fruit Cups', price: 12, cogs: 4)
 Sku.create(name: 'Delivery', price: 20, cogs: 0)
+
+User.create(email:"admin@banquet.com", password:"my_super_secret_passwd", password_confirmation:"my_super_secret_passwd")
