@@ -24,3 +24,5 @@ Sku.create(name: 'Delivery', price: 20, cogs: 0)
 
 
 User.create(email:"admin@banquet.com", password:"my_super_secret_password", password_confirmation:"my_super_secret_password")
+# for some reason when running db:seed, the app thinks the admin
+# is signed in as soon as you view the app :(

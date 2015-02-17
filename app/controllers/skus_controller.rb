@@ -1,6 +1,7 @@
 class SkusController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_sku, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!
+
 
 
   # GET /skus
