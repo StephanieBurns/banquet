@@ -24,6 +24,11 @@ class SkusController < ApplicationController
   # POST /skus
   # POST /skus.json
   def create
+    @sku_ids = Array.new
+    @skus = Sku.all
+    @skus.each do |sku|
+      @sku_ids << sku.id
+      end
     @sku = Sku.new(sku_params)
 
     respond_to do |format|

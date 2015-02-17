@@ -16,21 +16,18 @@
   </div>
 
 
- <!--  <div class="form-group">
-    <%= f.label :total_price, "Tray 1 - 24 assorted sandwiches and desserts" %><br>
-    <%= f.number_field :total_price, :step => 1.0 %>
-  </div> -->
 
-  <% @sku.each do |sku| %>
+  <% @skus.each do |sku| %>
   <%= sku.checkbox_tag :sku_name %>
 
 
+  <div class
+  <%= f.label :sku_id %>
+  <%= f.check_box_tag :sku_id %>
+  </div>
 
+  
   <% end %>
-
-
-
-
 
 
 

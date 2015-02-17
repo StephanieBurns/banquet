@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
 
   # GET /orders
   # GET /orders.json
+def begin
+end
+
   def index
     @orders = Order.all
   end
