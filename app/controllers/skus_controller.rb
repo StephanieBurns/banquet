@@ -1,6 +1,8 @@
 class SkusController < ApplicationController
   before_action :set_sku, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /skus
   # GET /skus.json
   def index

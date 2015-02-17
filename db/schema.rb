@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150217011902) do
     t.integer "sku_id",   null: false
   end
 
+  add_index "orders_skus", ["order_id", "sku_id"], name: "index_orders_skus_on_order_id_and_sku_id", using: :btree
+
   create_table "skus", force: :cascade do |t|
     t.integer  "order_id"
     t.string   "name"

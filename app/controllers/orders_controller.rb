@@ -1,9 +1,12 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /orders
   # GET /orders.json
 def begin
+  if current_user.email == "admin@banquet.com"
+    redirect_to "/skus"
+  end
 end
 
   def index
