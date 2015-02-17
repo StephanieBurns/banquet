@@ -1,5 +1,5 @@
 class SkusController < ApplicationController
-  before_action :authenticate_user!
+  
   before_action :set_sku, only: [:show, :edit, :update, :destroy]
 
 
@@ -8,6 +8,11 @@ class SkusController < ApplicationController
   # GET /skus.json
   def index
     @skus = Sku.all
+    
+    if current_user.email == "admin@banquet.com"
+    else
+    redirect_to "/orders"
+    end
   end
 
   # GET /skus/1
