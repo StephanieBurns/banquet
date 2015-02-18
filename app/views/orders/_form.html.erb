@@ -16,17 +16,11 @@
   </div>
 
 
-<div>
-  <% @skus.each do |sku| %>
-
-  <div class="form-group">
-  <%= label_tag sku.name %>
-  <%= label_tag sku.price %>
-  <%= check_box_tag :sku_id %>
-  </div>
-
-  
+  <div>
+  <%= f.fields_for :order_skus do |builder| %>
+    <%= render "order_skus/form", :f => builder %>
   <% end %>
+  </div>
 
 
 
