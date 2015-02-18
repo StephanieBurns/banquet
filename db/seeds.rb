@@ -23,6 +23,9 @@ Sku.create(name: '6 Fruit Cups', price: 12, cogs: 4)
 Sku.create(name: 'Delivery', price: 20, cogs: 0)
 
 
-User.create(email:"admin@banquet.com", password:"my_super_secret_password", password_confirmation:"my_super_secret_password")
-# for some reason when running db:seed, the app thinks the admin
-# is signed in as soon as you view the app :(
+
+
+# to create an admin account, sign up through the browser
+# then open rails console and enter the following to make the account
+# an administrator account
+# User.last.update_attribute(:role,"admin")

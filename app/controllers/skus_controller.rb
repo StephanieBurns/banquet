@@ -1,7 +1,7 @@
 class SkusController < ApplicationController
   
   before_action :set_sku, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_admin
+
 
 
 
@@ -9,25 +9,30 @@ class SkusController < ApplicationController
   # GET /skus.json
   def index
     @skus = Sku.all
+    authorize! :read, @skus
   end
 
   # GET /skus/1
   # GET /skus/1.json
   def show
+    authorize! :read, @skus
   end
 
   # GET /skus/new
   def new
+    authorize! :read, @skus
     @sku = Sku.new
   end
 
   # GET /skus/1/edit
   def edit
+    authorize! :read, @skus
   end
 
   # POST /skus
   # POST /skus.json
   def create
+    authorize! :read, @skus
     @sku_ids = Array.new
     @skus = Sku.all
     @skus.each do |sku|
@@ -49,6 +54,7 @@ class SkusController < ApplicationController
   # PATCH/PUT /skus/1
   # PATCH/PUT /skus/1.json
   def update
+    authorize! :read, @skus
     respond_to do |format|
       if @sku.update(sku_params)
         format.html { redirect_to @sku, notice: 'Sku was successfully updated.' }
@@ -81,10 +87,5 @@ class SkusController < ApplicationController
       params.require(:sku).permit(:order_id, :name, :price, :cogs)
     end
 
-    def check_if_admin
-      if current_user.email == "admin@banquet.com"
-    else
-    redirect_to "/orders"
-    end
-  end
+    
 end
