@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217073148) do
+ActiveRecord::Schema.define(version: 20150218023943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 20150217073148) do
     t.integer "order_id", null: false
     t.integer "sku_id",   null: false
   end
-
-  add_index "orders_skus", ["order_id", "sku_id"], name: "index_orders_skus_on_order_id_and_sku_id", using: :btree
 
   create_table "skus", force: :cascade do |t|
     t.integer  "order_id"
@@ -53,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150217073148) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

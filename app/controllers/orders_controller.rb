@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_sku, only: [:edit, :new, :create]
   # GET /orders
   # GET /orders.json
 def begin
@@ -25,7 +25,6 @@ end
   # GET /orders/new
   def new
     @order = Order.new
-    @skus = Sku.all
   end
 
   # GET /orders/1/edit
@@ -35,7 +34,7 @@ end
   # POST /orders
   # POST /orders.json
   def create
-    @skus = Sku.all
+
     @order = Order.new(order_params)
 
     respond_to do |format|
@@ -82,5 +81,9 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:user_id, :party_date, :skus => [:id, :price])
+    end
+
+    def set_sku
+      @skus = Sku.all
     end
 end
