@@ -22,6 +22,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+      sku = @order.skus.build
+
   end
 
   # GET /orders/1/edit
@@ -31,12 +33,23 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-
+#create logic that saves the loop data into a new record when we hit "create order"
     @order = Order.new(order_params)
+      
+    order_skus = params[:order][:order_skus][:sku_id]
+    order_skus.each do |ordersku|
+      if ordersku.last == "1" 
+      
+
+        OrderSku.create(order_id: @order.id, sku_id: ordersku.first)
+      end
+    end
+
+    
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @order, notice: 'Order was successfully created. It will be ready on your party date.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -64,7 +77,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: 'Order was successfully deleted.' }
       format.json { head :no_content }
     end
   end

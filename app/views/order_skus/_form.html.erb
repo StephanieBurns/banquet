@@ -1,0 +1,8 @@
+<% @skus.each do |sku| %>
+	<div class="form-group">
+    <%= f.label sku.name %>
+    <%= f.label sku.price %>
+    <%= f.check_box :sku_id, id:"sku_id_#{sku.id}", name:"order[order_skus][sku_id]#{sku.id}" %>
+   
+	</div>
+<% end %>
