@@ -1,7 +1,7 @@
 class SkusController < ApplicationController
   
   before_action :set_sku, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_admin
+
 
 
 
@@ -81,10 +81,5 @@ class SkusController < ApplicationController
       params.require(:sku).permit(:order_id, :name, :price, :cogs)
     end
 
-    def check_if_admin
-      if current_user.email == "admin@banquet.com"
-    else
-    redirect_to "/orders"
-    end
-  end
+    
 end

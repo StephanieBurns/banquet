@@ -4,11 +4,8 @@ class OrdersController < ApplicationController
   before_action :set_sku, only: [:edit, :new, :create]
   # GET /orders
   # GET /orders.json
-def begin
-  if current_user.email == "admin@banquet.com"
-    redirect_to "/skus"
+  def begin
   end
-end
 
   
 
