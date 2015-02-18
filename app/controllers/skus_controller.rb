@@ -9,25 +9,30 @@ class SkusController < ApplicationController
   # GET /skus.json
   def index
     @skus = Sku.all
+    authorize! :read, @skus
   end
 
   # GET /skus/1
   # GET /skus/1.json
   def show
+    authorize! :read, @skus
   end
 
   # GET /skus/new
   def new
+    authorize! :read, @skus
     @sku = Sku.new
   end
 
   # GET /skus/1/edit
   def edit
+    authorize! :read, @skus
   end
 
   # POST /skus
   # POST /skus.json
   def create
+    authorize! :read, @skus
     @sku_ids = Array.new
     @skus = Sku.all
     @skus.each do |sku|
@@ -49,6 +54,7 @@ class SkusController < ApplicationController
   # PATCH/PUT /skus/1
   # PATCH/PUT /skus/1.json
   def update
+    authorize! :read, @skus
     respond_to do |format|
       if @sku.update(sku_params)
         format.html { redirect_to @sku, notice: 'Sku was successfully updated.' }
