@@ -19,7 +19,7 @@
 <div>
   <% @skus.each do |sku| %>
 
-  <div class="field">
+  <div class="form-group">
   <%= label_tag sku.name %>
   <%= check_box_tag :sku_id %>
   </div>
