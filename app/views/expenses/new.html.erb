@@ -1,0 +1,19 @@
+<%= form_tag("/expenses") do %>
+  <%= label_tag(:date, "Date") %>
+
+  <%= text_field_tag (:date) %>
+
+  <br> <br>
+
+  <%= label_tag(:amount, "Amount") %>
+   <%= text_field_tag (:amount) %>
+
+   <br><br>
+
+   <%= submit_tag %>
+
+
+
+  <% end %>
+
+
