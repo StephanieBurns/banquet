@@ -10,7 +10,18 @@
   <strong>Party date:</strong>
   <%= @order.party_date %>
 </p>
+<br>
+<p>
+  <strong>All items:</strong>
 
+  <% @order.order_skus.each do |os| %>
+  	<%= os.sku.name %>
+  	<%= os.price %>
+  <% end %>
+
+
+</p>
+<br>
 <p>
   <strong>Total price:</strong>
   <%= @order.total_price %>
