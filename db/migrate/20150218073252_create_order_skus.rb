@@ -5,6 +5,7 @@ class CreateOrderSkus < ActiveRecord::Migration
     t.integer :sku_id
     t.integer :price
     t.integer :cogs
+    t.timestamps null: false
   	end
   end
 end

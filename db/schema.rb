@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20150218073252) do
   enable_extension "plpgsql"
 
   create_table "order_skus", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "sku_id"
-    t.integer "price"
-    t.integer "cogs"
+    t.integer  "order_id"
+    t.integer  "sku_id"
+    t.integer  "price"
+    t.integer  "cogs"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -30,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150218073252) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
 
   create_table "skus", force: :cascade do |t|
     t.integer  "order_id"

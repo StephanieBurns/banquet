@@ -37,18 +37,17 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
       
     order_skus = params[:order][:order_skus][:sku_id]
-    order_skus.each do |ordersku|
-      if ordersku.last == "1" 
-      
-
-        OrderSku.create(order_id: @order.id, sku_id: ordersku.first)
-      end
-    end
-
-    
 
     respond_to do |format|
       if @order.save
+        
+      order_skus.each do |i|
+        if i.last == "1"
+          sku = Sku.find(i.first)
+          OrderSku.create(order_id: @order.id, sku_id: i.first, price: sku.price)
+        end
+      end
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
