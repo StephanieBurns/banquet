@@ -13,10 +13,9 @@
 <br>
 <p>
   <strong>All items:</strong>
-
   <% @order.order_skus.each do |os| %>
   	<%= os.sku.name %>
-  	<%= os.price %>
+  	<%= os.price %> <br>
   <% end %>
 
 
@@ -26,7 +25,7 @@
   <strong>Total price:</strong>
   <%= @order.total_price %>
 </p>
-
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+<%= link_to "Delete", @order, :method => "delete" %>
 <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>

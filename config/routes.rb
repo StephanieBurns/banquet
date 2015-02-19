@@ -1,27 +1,23 @@
 Rails.application.routes.draw do
 
-
-  
-  
   devise_for :users
 
   devise_scope :user do
-  get 'users/sign_out' => 'devise/sessions#destroy'
-  end
+    get 'users/sign_out' => 'devise/sessions#destroy'
 
+  end
 
   root 'orders#begin'
-
-  resources :skus
-
   resources :orders
-
-  Banquet::Application.routes.draw do
-  resources :order do
-    get 'order_skus', on: :member
-  end
   resources :skus
-end
+
+
+  #Banquet::Application.routes.draw do
+  # resources :order do
+  #   get 'order_skus', on: :member
+  # end
+  # resources :skus
+  #end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

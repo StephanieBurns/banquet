@@ -7,8 +7,6 @@ class OrdersController < ApplicationController
   def begin
   end
 
-  
-
   def index
     @orders = Order.all
     
@@ -76,9 +74,10 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully deleted.' }
+      format.html { redirect_to orders_path, notice: 'Order was successfully deleted.' }
       format.json { head :no_content }
-    end
+  end
+
   end
 
   private
