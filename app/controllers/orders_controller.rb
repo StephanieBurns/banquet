@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    
   end
 
   # GET /orders/1
@@ -21,7 +20,6 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
       sku = @order.skus.build
-
   end
 
   # GET /orders/1/edit
@@ -46,7 +44,7 @@ class OrdersController < ApplicationController
         end
       end
 
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @order}
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -78,7 +76,17 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
   end
 
+  def total_price
+    if @order.save
+      order_skus.each do |i|
+        end
+    if i.last == "1"
+         total_price = Order.last.order_skus.sum('price')
+    end
   end
+end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -94,4 +102,7 @@ class OrdersController < ApplicationController
     def set_sku
       @skus = Sku.all
     end
+  end
 end
+
+
