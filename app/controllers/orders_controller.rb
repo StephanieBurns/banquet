@@ -2,24 +2,17 @@ class OrdersController < ApplicationController
   
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_sku, only: [:edit, :new, :create]
+
   # GET /orders
   # GET /orders.json
-  def begin
-  end
-
   def index
     @orders = Order.all
-  end
-
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
   end
 
   # GET /orders/new
   def new
     @order = Order.new
-      sku = @order.skus.build
+    sku = @order.skus.build
   end
 
   # GET /orders/1/edit
@@ -29,7 +22,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-#create logic that saves the loop data into a new record when we hit "create order"
+  #create logic that saves the loop data into a new record when we hit "create order"
     @order = Order.new(order_params)
       
     order_skus = params[:order][:order_skus][:sku_id]
@@ -37,12 +30,13 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         
-      order_skus.each do |i|
-        if i.last == "1"
-          sku = Sku.find(i.first)
-          OrderSku.create(order_id: @order.id, sku_id: i.first, price: sku.price)
+        order_skus.each do |i|
+
+          if i.last == "1"
+            sku = Sku.find(i.first)
+            OrderSku.create(order_id: @order.id, sku_id: i.first, price: sku.price)
+          end
         end
-      end
 
         format.html { redirect_to @order}
         format.json { render :show, status: :created, location: @order }
@@ -74,35 +68,25 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to orders_path, notice: 'Order was successfully deleted.' }
       format.json { head :no_content }
-  end
-
-  def total_price
-    if @order.save
-      order_skus.each do |i|
-        end
-    if i.last == "1"
-         total_price = Order.last.order_skus.sum('price')
     end
   end
-end
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:user_id, :party_date, :skus => [:id, :price])
-    end
-
-    def set_sku
-      @skus = Sku.all
-    end
+  def set_order
+    @order = Order.find(params[:id])
   end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:user_id, :party_date, :skus => [:id, :price])
+  end
+
+  def set_sku
+    @skus = Sku.all
+  end
+
 end
+
 
 
