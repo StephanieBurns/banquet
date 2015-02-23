@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h1>Our profit on this order.... <%= @profit %></h1>
+<p>
 
+COGS <%= @cogs %>
+Profits <%= @profit %>
+</p>
 <p>
   <strong>User:</strong>
   <%= 'Order Confirmation' %> 
@@ -20,9 +25,8 @@
 
   <p>
   <strong>Total Price:</strong>
-  <% @order.order_skus.each do |os| %>
-  <%= @order.total_price %>
- <% end %>
+  <%= @revenue %>
+
 </p>
 <br>
 

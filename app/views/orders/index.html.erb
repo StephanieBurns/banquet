@@ -33,7 +33,7 @@
         <td><%= order.user_id %></td>
         <td><%= order.party_date %></td>
         <td><%= order.total_price %></td>
-        <td><%= link_to 'Show', order_path %></td>
+        <td><%= link_to 'Show', order_path(id: order.id) %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete %></td>
       </tr>

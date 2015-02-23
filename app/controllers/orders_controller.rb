@@ -2,11 +2,13 @@ class OrdersController < ApplicationController
   
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_sku, only: [:edit, :new, :create]
-
+  def begin
+  end
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
+   
   end
 
   # GET /orders/new
@@ -17,6 +19,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @revenue = @order.skus.sum(:price)
+    @cogs = @order.skus.sum(:cogs)
+    @profit = @revenue - @cogs 
   end
 
   # POST /orders
