@@ -33,9 +33,11 @@ class OrdersController < ApplicationController
   def create
   #create logic that saves the loop data into a new record when we hit "create order"
     @order = Order.new(order_params)
-      
+  
+    @user_id = current_user.id
     order_skus = params[:order][:order_skus][:sku_id]
-
+    @order.user_id = @user_id
+    
     respond_to do |format|
       if @order.save
         
@@ -43,7 +45,7 @@ class OrdersController < ApplicationController
 
           if i.last == "1"
             sku = Sku.find(i.first)
-            OrderSku.create(order_id: @order.id, sku_id: i.first, price: sku.price)
+            OrderSku.create(user_id: @user_id, order_id: @order.id, sku_id: i.first, price: sku.price)
           end
         end
 

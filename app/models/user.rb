@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          belongs_to :order
-
+         has_many :order_skus
+         has_many :orders
          attr_accessor :roles
 
          ROLES = %w[admin customer]
