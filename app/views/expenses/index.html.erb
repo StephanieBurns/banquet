@@ -1,1 +1,27 @@
-<%= @derp %>
+
+<table>
+  
+  <table class="table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+
+  <tbody>
+	<% @formatted_data.each do |fd| %>
+	  <tr>
+		<td><%= fd["category"] %></td>
+		<td><%= fd["date"] %></td>
+		<td><%= fd["amount"] %></td>
+	<% end %>
+   </tr>
+  </tbody>
+
+</table>
+
+
+  
