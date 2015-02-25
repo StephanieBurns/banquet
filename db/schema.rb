@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225022322) do
+ActiveRecord::Schema.define(version: 20150225034123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "order_skus", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "sku_id"
-    t.integer "price"
-    t.integer "cogs"
-    t.integer "user_id"
+    t.integer  "order_id"
+    t.integer  "sku_id"
+    t.integer  "price"
+    t.integer  "cogs"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150225022322) do
     t.integer  "total_price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "fulfilled"
   end
 
   create_table "skus", force: :cascade do |t|
