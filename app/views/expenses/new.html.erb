@@ -1,18 +1,22 @@
 <%= form_tag("/expenses") do %>
-  <%= label_tag(:date, "Date") %>
+  
+ 		<br><%= label_tag(:category, "Category") %>
+	  <%= text_field_tag (:category) %>
 
-  <%= text_field_tag (:date) %>
+ <br> <br>
 
-  <br> <br>
+	  <br><%= label_tag(:date, "Date") %>
+	  <%= text_field_tag (:date) %>
 
-  <%= label_tag(:amount, "Amount") %>
-   <%= text_field_tag (:amount) %>
+ <br> <br>
+ 
 
-   <br><br> 
+	  <br> <%= label_tag(:amount, "Amount") %>
+	  <%= text_field_tag (:amount) %>
 
-   <%= submit_tag %>
+ <br> <br>
 
-
+  <br><%= submit_tag "Submit" %>
 
   <% end %>
 
