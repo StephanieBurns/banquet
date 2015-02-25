@@ -7,9 +7,12 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    if current_user.role == "admin"
+    @orders = Order.all
+  else
     @orders = current_user.orders
-   
-  end
+    end
+   end
 
   # GET /orders/new
   def new
