@@ -48,13 +48,14 @@
   </div>
 </div>
 
+
+<% if current_user.role == "admin" %>
 <div class="container">
   <div class="btn btn-warning" role="button">
-<% if current_user.role == "admin" %>
 <%= link_to 'Skus', skus_path %>
-<% end %>
   </div>
 </div>
+<% end %>
 
 <div class="container">
   <div class="btn btn-warning" role="button">
@@ -63,14 +64,13 @@
 </div>
 
 
-<div class="container">
-  <div class="btn btn-warning" role="button">
-<% if current_user.role == "admin" %>
-<%= link_to 'Send to API', new_expense_path %>
-<% end %>
+  <% if current_user.role == "admin" %>
+  <div class="container">
+    <div class="btn btn-warning" role="button">
+      <%= link_to 'Send to API', new_expense_path %>
+    </div>
   </div>
-</div>
-
+<% end %>
 
 
 </div>
