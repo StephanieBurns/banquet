@@ -17,13 +17,11 @@ ActiveRecord::Schema.define(version: 20150225022322) do
   enable_extension "plpgsql"
 
   create_table "order_skus", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "sku_id"
-    t.integer  "price"
-    t.integer  "cogs"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer "order_id"
+    t.integer "sku_id"
+    t.integer "price"
+    t.integer "cogs"
+    t.integer "user_id"
   end
 
   create_table "orders", force: :cascade do |t|
