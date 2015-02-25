@@ -1,0 +1,8 @@
+div.btn a {
+  color: white;
+}
+
+div.btn a:hover {
+  text-decoration: none;
+  background-color: transparent;
+}
