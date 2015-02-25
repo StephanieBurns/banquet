@@ -8,9 +8,9 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     if current_user.role == "admin"
-    @orders = Order.all
-  else
-    @orders = current_user.orders
+      @orders = Order.all
+    else
+      @orders = current_user.orders
     end
    end
 
@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   def create
   #create logic that saves the loop data into a new record when we hit "create order"
     @order = Order.new(order_params)
-  
+    byebug
     @user_id = current_user.id
     order_skus = params[:order][:order_skus][:sku_id]
     @order.user_id = @user_id
@@ -50,8 +50,8 @@ class OrdersController < ApplicationController
             sku = Sku.find(i.first)
             OrderSku.create(user_id: @user_id, order_id: @order.id, sku_id: i.first, price: sku.price)
           end
-        end
 
+        end
         format.html { redirect_to @order}
         format.json { render :show, status: :created, location: @order }
       else

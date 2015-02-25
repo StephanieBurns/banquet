@@ -26,7 +26,7 @@
           <tr>
             <th>User ID</th>
             <th>Event Date</th>
-            <th>Total Price</th>
+            <th>Revenue</th>
             <th>See Order</th>
             <th>Edit Order</th>
             <th>Delete Order</th>
@@ -38,7 +38,7 @@
       <tr>
         <td><%= order.user_id %></td>
         <td><%= order.party_date %></td>
-        <td><%= order.total_price %></td>
+        <td><%= number_to_currency(order.skus.sum(:price)) %></td>
         <td><%= link_to 'Show', order_path(id: order.id) %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete %></td>
