@@ -18,6 +18,7 @@
             <th>Event Date</th>
             <th>Revenue</th>
             <th>See Order</th>
+            <th>Fulfillment Status</th>
             <th>Edit Order</th>
             <th>Delete Order</th>
           </tr>
@@ -30,8 +31,19 @@
         <td><%= order.party_date %></td>
         <td><%= number_to_currency(order.skus.sum(:price)) %></td>
         <td><%= link_to 'Show', order_path(id: order.id) %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete %></td>
+        <td><% if order.fulfilled %>
+            <%= "Fulfilled" %>
+            <% else %>
+            <%= "Not Started" %>
+            <% end %></td>
+          <% if !order.fulfilled %>
+          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+          <td><%= link_to 'Destroy', order, method: :delete %></td>
+          <% else %>
+          <td></td>
+          <td></td>
+          <% end %>
+        
       </tr>
     <% end %>
   </tbody>
